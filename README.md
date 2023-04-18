@@ -2,7 +2,7 @@
 A collection of tools for the game stormworks, a description will be given per file.
 
 ## Plotting
-A collection of scripts to plot
+A collection of scripts to plot with, using [Debug View](https://learn.microsoft.com/en-us/sysinternals/downloads/debugview)!
 
 ### 2d/3d plot.py
 Plots CSVS in 2d/3d with matplotlib
