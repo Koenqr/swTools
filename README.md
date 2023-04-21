@@ -24,3 +24,4 @@ Gives acces to removed items in inventory
 
 ### StormworksXMLWorkbench.py
 XML edits most workbenches to 250^3
+Needs update to use workbench size for detection
