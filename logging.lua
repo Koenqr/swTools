@@ -2,8 +2,8 @@
 --vscode bs
 
 seperator="; "
-vars = {'x', 'y', 'z'} -- list of variables to log
-header="#; time; "
+vars = {'new', 'old'} -- list of variables to log
+header="#; time"
 for i=1, #vars do
   header=header..seperator..vars[i]
 end
