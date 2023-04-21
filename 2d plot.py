@@ -23,7 +23,7 @@ def plot2d(file,series,sep=';',header=0,legend=True,img=False,style='dark_backgr
         file (str): Name of the file to plot
         series (list): list that contains list of series to plot
         sep (str, optional): _description_. Defaults to ';'.
-        header (int, optional): _description_. Defaults to 0.
+        header (int, optional): _description_. Defaults to 0.0
         legend (bool, optional): _description_. Defaults to True.
         img (bool, optional): _description_. Defaults to False.
         darkMode (bool, optional): _description_. Defaults to true.

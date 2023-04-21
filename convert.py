@@ -39,7 +39,7 @@ regex = r"(\d*)\t(\d*\.\d*)\t\[\d*\]"
 
 for k,line in enumerate(lines):
     if pid in line:
-        l = re.sub(regex,r"\1; \2; ",line)
+        l = re.sub(regex,r"\1; \2",line)
         newLines.append(l)
         
         
