@@ -1,6 +1,8 @@
 import os
 import re
 
+print("THIS DOESNT WORK YET AND WILL BREAK SHIT")
+
 location = input("Enter the location of the data folder (Leave empty for defualt): ")
 if location == "":
     location = r"C:\Program Files (x86)\Steam\steamapps\common\Stormworks\rom\data\definitions"
@@ -59,6 +61,7 @@ for file in files:
     if flag not in ["56", "57"]:
         xmlFile = xmlFile[:start_index] + "56" + xmlFile[end_index:]
         outFile = True
+        deprecatedFiles.append(file)
 
 
 
