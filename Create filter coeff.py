@@ -11,10 +11,10 @@ dt = freq**-1
 
 bandtype = "lowpass"
 
-order = input("Enter the order of the filter: ")
-cutOff = input("Enter the cut off frequency of the filter: ")
+order = float(input("Enter the order of the filter: "))
+cutOff = float(input("Enter the cut off frequency of the filter: "))
 
-b , a = scipy.signal.iirdesign(0.2,0.3,0.01,0.1, ftype='ellip', output='ba')
+b , a = scipy.signal.iirfilter(order, cutOff, btype=bandtype, analog=False, ftype='butter', output='ba', fs=freq)
 
 print('b table:')
 print(b)
