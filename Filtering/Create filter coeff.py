@@ -9,12 +9,32 @@ import math
 freq = 60
 dt = freq**-1
 
-bandtype = "lowpass"
+filterTypes = ["lowpass", "highpass", "bandpass", "bandstop"]
 
-order = float(input("Enter the order of the filter: "))
-cutOff = float(input("Enter the cut off frequency of the filter: "))
+print("choose a filter type: ")
+for k,v in enumerate(filterTypes):
+    print(k, v)
+    
+bandtype = filterTypes[int(input("Enter the number of the filter type: "))]
 
-b , a = scipy.signal.iirfilter(order, cutOff, btype=bandtype, analog=False, ftype='butter', output='ba', fs=freq)
+order = int(input("Enter the order of the filter: "))
+freqs = []
+
+while True:
+	l=input("Enter frequencies of importance: ")
+	if l=='exit':
+		break
+	freqs.append(float(l))
+ 
+typeSel = input("IIR or FIR? enter 'i' or 'f': ").lower()
+if typeSel == 'i':
+	b , a = scipy.signal.iirfilter(order, freqs, btype=bandtype, analog=False, ftype='butter', output='ba', fs=freq)
+elif typeSel == 'f':
+	b , a = scipy.signal.firwin(order, freqs, btype=bandtype, analog=False, ftype='butter', output='ba', fs=freq)
+else:
+	print("invalid input")
+	exit()
+
 
 print('b table:')
 print(b)
@@ -39,7 +59,7 @@ plt.margins(0, 0.1)
 
 plt.grid(which='both', axis='both')
 
-plt.axvline(cutOff, color='green') # cutoff frequency
+plt.axvline(freqs[0], color='green') # cutoff frequency
 
 plt.tight_layout()
 
