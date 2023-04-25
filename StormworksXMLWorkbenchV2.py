@@ -21,47 +21,13 @@ files = os.listdir(location)
 
 files = [file for file in files if file.endswith(".xml") and not file.endswith("instances.xml")]
 
-""" Regex matching requirments
-		<edit_area id="hangar_left_edit" grid_size="4">
-			<transform 00="-0.707107" 02="-0.707107" 20="0.707107" 22="-0.707107" 30="-75.614319" 31="18.908291" 32="131.597"/>
-			<size x="36.5" y="10" z="35"/>
-		</edit_area>
-		<edit_area id="hangar_right_edit" grid_size="4">
-			<transform 00="-0.707107" 02="-0.707107" 20="0.707107" 22="-0.707107" 30="-128.20401" 31="18.908291" 32="79.007309"/>
-			<size x="36.5" y="10" z="35"/>
-		</edit_area>
-		<edit_area id="dock_left_edit" grid_size="2">
-			<transform 00="-0" 02="-1" 20="1" 22="-0" 30="384.159332" 31="7.5292" 32="-119.435997"/>
-			<size x="22.5" y="20.5" z="57.25"/>
-		</edit_area>
-		<edit_area id="dock_right_edit" grid_size="2">
-			<transform 00="-0" 02="-1" 20="1" 22="-0" 30="385.452637" 31="7.897019" 32="-185.026245"/>
-			<size x="22.5" y="20.5" z="57.25"/>
-		</edit_area>
-		<edit_area id="hangar_edit" grid_size="3">
-			<transform 00="-0" 02="1" 20="-1" 22="-0" 30="1.91637" 31="8.061787" 32="22.232985"/>
-			<size x="16.5" y="6" z="18.5"/>
-		</edit_area>
-"""
-
-
 sizeTagTable=[
     r'<size x="36.5" y="10" z="35"/>', #large hangar
     r'<size x="22.5" y="20.5" z="57.25"/>', #large dock
-    r'<size x="5" y="6" z="25"/>', #
-    r'<size x="16.5" y="6" z="18.5"/>', #
+    r'<size x="5" y="6" z="25"/>', # medium dock
+    r'<size x="16.5" y="6" z="18.5"/>', #small hangar
     r'<size x="7.5" y="7.5" z="15"/>' #small dock
 ]
-
-#things that need to be matched
-#id must have edit in it
-
-#replace grid_size with 0
-#replace size with xyz 250 250 250
-
-# <edit_area id="(\w+edit)" grid_size="\d">
-
-regex = re.compile(r'<edit_area id="(\w+edit)" grid_size="\d">')
 
 sizeTag = '\t\t\t<size x="250" y="250" z="250"/>'
 
@@ -75,7 +41,7 @@ for file in files:
 	for k, line in enumerate(xmlFile):
 		for size in sizeTagTable:
 			if size in line:
-				print("match in file: " + file + " on line: " + str(k))
+				print("match in file: " + file)
 				lineList.append(k)
    
 	for line in lineList:
