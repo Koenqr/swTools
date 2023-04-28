@@ -31,3 +31,18 @@ function createFilter(b,a)
 		end
 	}
 end
+
+
+
+function createExponential(alpha)
+	return {alpha=alpha,s=0,
+		run = function(self,var)
+			self.s = self.s + self.alpha*(var-self.s)
+			return self.s
+		end,
+		set = function(self,var)
+			self.s = var or 0
+		end
+	}
+end
+
