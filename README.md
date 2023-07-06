@@ -1,3 +1,4 @@
+**I will no longer be maintaining this repo due to a lack of intrest in the game**
 # swTools
 A collection of tools for the game stormworks, a description will be given per file.
 
