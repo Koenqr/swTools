@@ -17,25 +17,17 @@ deltarsID = 76561197976988654
 ownID = int(input("Enter your Steam64 ID: "))
 
 # Convert Steam IDs to bytes
-deltarsID_bytes = struct.pack('<Q', deltarsID)
-ownID_bytes = struct.pack('<Q', ownID)
+deltarsID_bytes = struct.pack('q', deltarsID)
+ownID_bytes = struct.pack('q', ownID)
 
 # Replace deltarsID with ownID in binary files
 for path in paths:
     with open(path, 'rb') as f:
         data = f.read()
 
-    # Find index of deltarsID bytes
-    index = data.find(deltarsID_bytes)
-
-    if index != -1:
-        # Replace deltarsID bytes with ownID bytes
-        data = data[:index] + ownID_bytes + data[index+len(deltarsID_bytes):]
-    else:
-        print("Couldn't find deltarsID in file: " + path)
-
-        # Write modified binary data to file
-        with open(path, 'wb') as f:
-            f.write(data)
+    data = data.replace(deltarsID_bytes, ownID_bytes)
+    
+    with open(path, 'wb') as f:
+        f.write(data)
 
 print("enjoying having \"?add_admin\" in the wonk of storms...")
