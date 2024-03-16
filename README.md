@@ -35,3 +35,6 @@ Make filter coefficients for a generic filter function using the b and a arrays
 
 ### filter.lua
 The generic filter in lua
+
+## GPS-Astro conversion
+This is a mission file that you can use to generate a CSV in combination with the plotting tools convert.py and the DBL from ms
